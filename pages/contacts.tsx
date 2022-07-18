@@ -123,7 +123,7 @@ const Contacts = () => {
       <input type="text" name="name" placeholder='Insira seu nome' />
       <label>Email: <span>*</span></label>
       <input type="email" name="email" placeholder='Insira seu email'/>
-      <label>Messagem: <span>*</span></label>
+      <label>Mensagem: <span>*</span></label>
       <input type="text" className='textarea' name="message" placeholder='Escreva sua mensagem...'/>
       <button type="submit" >Enviar</button>
       </form>

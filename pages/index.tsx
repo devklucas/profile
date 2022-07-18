@@ -1,156 +1,26 @@
-import Head from "next/head";
-import Image from "next/image";
-import perfil from "../public/per.jpg";
-import styled from "styled-components";
-import Link from "next/link";
-import { FcMenu } from "react-icons/fc";
 import { useState } from "react";
+import { FcMenu } from "react-icons/fc";
 
-const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background: black;
-  display: flex;
-`;
-const SideImage = styled.div`
-  width: 40%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  img {
-    width: 100%;
-  }
-  @media (max-width: 700px) {
-    img {
-      height: 250px;
-      margin-top: 120px;
-    }
-  }
-`;
-const SideButtons = styled.div`
-  width: 60%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-`;
-const ContentButtons = styled.div`
-  display: flex;
-  width: 100%;
-  height: 30%;
-  flex-direction: column;
-  justify-content: space-between;
-  div {
-    display: flex;
-    justify-content: flex-end;
-  }
-  h1 {
-    width: 100%;
-    color: rgb(126, 217, 87);
-    font-size: 30px;
-    text-align: center;
-  }
-  button,
-  .download {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    height: 40px;
-    border: 1px solid white;
-    padding: 15px;
-    color: white;
-    border-radius: 8px;
-    margin: 20px 5% 0px 0px;
-    @media (max-width: 700px) {
-      display: none;
-    }
-  }
-  button:hover,
-  .download:hover {
-    background-color: white;
-    color: black;
-  }
-  .download {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    margin: 0;
-    display: flex;
-  }
+import Head from "next/head";
+import Link from "next/link";
 
-  .icon {
-    opacity: 0;
-  }
-  @media (max-width: 700px) {
-    .icon {
-      width: 60px;
-      height: 60px;
-      padding: 10px;
-      color: white;
-      opacity: 1;
-    }
-  }
-`;
-const ContentLink = styled.div`
-  width: 100%;
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Rancho", cursive;
-  span {
-    height: 100%;
-    font-size: 4rem;
-    width: 40%;
-    display: flex;
-    align-items: center;
-    color: white;
-  }
-  img {
-    width: 30%;
-    height: 50%;
-  }
-  @media (max-width: 700px) {
-    span {
-      font-size: 2rem;
-    }
-    img {
-      display: none;
-    }
-  }
-`;
-const MenuMobile = styled.nav`
-  display:flex;
-  width: 200px;
-  flex-direction: column;
-  position:absolute;
-  right:0;
-  top:10px;
-  
-  a{
-    border:1px solid black;
-    font-size:1.2rem;
-    padding:10px;
-    border-radius:8px;
-    background-color: rgb(126, 217, 87);
-    text-align:center;
-  }
-  p{
-    font-size: 1.2rem;
-    text-align:end;
-    padding: 10px;  
-    color:rgb(126, 217, 87);
-  }
-`
+import {
+  Container,
+  SideImage,
+  SideButtons,
+  ContentButtons,
+  ContentLink,
+  MenuMobile,
+} from "../components/sharedstyles";
+
 export default function Home() {
-  const [mobileMenu, setMobileMenu] = useState(false)
+  const [mobileMenu, setMobileMenu] = useState(false);
   const handleMenu = () => {
-    setMobileMenu(!mobileMenu)
-    setTimeout(()=>{setMobileMenu(false)},5000)
-  }
+    setMobileMenu(!mobileMenu);
+    setTimeout(() => {
+      setMobileMenu(false);
+    }, 5000);
+  };
   return (
     <Container>
       <Head>
@@ -169,21 +39,16 @@ export default function Home() {
       <SideButtons>
         <ContentButtons>
           <div>
-            {mobileMenu === false ?<FcMenu className="icon" onClick={handleMenu}></FcMenu>
-            : 
-            <MenuMobile>
-            <p onClick={handleMenu}>X</p>
-            <Link href="/works">
-              work  
-            </Link>
-            <Link href="/contacts">
-              Contacts
-            </Link>
-            <Link href="/about">
-              About              
-            </Link>
-            </MenuMobile>
-            }
+            {mobileMenu === false ? (
+              <FcMenu className="icon" onClick={handleMenu}></FcMenu>
+            ) : (
+              <MenuMobile>
+                <p onClick={handleMenu}>X</p>
+                <Link href="/works">Trabalhos</Link>
+                <Link href="/contacts">Contatos</Link>
+                <Link href="/about">Sobre</Link>
+              </MenuMobile>
+            )}
             <a
               className="download"
               href="/curriculum.pdf"
@@ -192,13 +57,13 @@ export default function Home() {
               Baixar cv
             </a>
             <Link href="/works">
-              <button>Works</button>
+              <button>Trabalhos</button>
             </Link>
             <Link href="/contacts">
-              <button>Contacts</button>
+              <button>Contatos</button>
             </Link>
             <Link href="/about">
-              <button>About</button>
+              <button>Sobre</button>
             </Link>
           </div>
           <h1>// Front-end React // devklucas </h1>
